@@ -31,6 +31,14 @@ export default function TextForm(props) {
         setText(newText.join(" "));
         props.showAlert("Extra spaces has been removed !", "success")
     }
+    const count = (text)=>{
+        if (text.length>0){
+        return text.trim().split(/[ ]+/).length;
+        }
+        else{
+        return 0;
+        }
+    }
 
     const [text, setText] = useState('');
     return (
@@ -49,9 +57,9 @@ export default function TextForm(props) {
 
             <div className='container my-4' style={{color: props.mode === 'dark' ? 'white' : 'rgb(3 12 51)'}}>
                 <h2> Word Counter </h2>
-                <p style={{color: ' #a29c9c'}}> -- Space Considered as word --</p>
+                <p style={{color: ' #a29c9c'}}> -- Space Considered as Character --</p>
                 <p className='word counter'>
-                    <b>{text.split(" ").length}</b> Word  and <b>{text.length} </b>Character .
+                    <b>{count(text)}</b> Word  and <b>{text.length} </b>Character .
                 </p>
             </div>
             <div className='container' style={{color: props.mode === 'dark' ? 'white' : 'rgb(3 12 51)'}}>
